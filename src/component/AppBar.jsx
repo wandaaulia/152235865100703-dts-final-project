@@ -1,21 +1,16 @@
 import React, {useState} from 'react'
 import {  AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
-import { useSelector, useDispatch } from 'react-redux';
-import { setOpenMenu, setCloseMenu } from '../features/recipeSlice';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
 const AppBar = () => {
     const [user] = useAuthState(auth);
-   const dispatch = useDispatch();
 
    const navigate = useNavigate();
 
-   const openMenu = () => {
-     dispatch(setOpenMenu());
-   }
+
 
    const navigateTo = (link) => {
 

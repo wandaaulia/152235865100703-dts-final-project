@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useGetCategoryFoodQuery } from '../services/Apis';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ImSpoonKnife } from "react-icons/im";
-import { BiTimeFive } from "react-icons/bi";
-import { BsFillBookmarkFill , BsHeartFill} from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
@@ -13,26 +9,14 @@ import ResponsiveItem from './ResponsiveItem';
 
 const ContainerList = (props) => {
 
-    const [save, setSave] = useState([]);
-    const [recipe, setRecipe] = useState([]);
-    
-    const navigate = useNavigate();
-   
-
      const { data, error, isLoading } = useGetCategoryFoodQuery(props.query);
 
     let arrayData;
-
-    const trunc = (words) => words.split(/[.?!]/)[0].split(' ').slice(0, 6).join(' ');
 
     if(data) {
         arrayData = data.meals.slice(1, 9);
         console.log(arrayData);
         
-    }
-
-    const DetailFood = (id) => {
-        navigate(`/detailfood/${id}`)
     }
 
 

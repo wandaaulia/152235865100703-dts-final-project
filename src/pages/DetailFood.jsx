@@ -1,17 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 import AppBar from '../component/AppBar'
-import { Navigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useGetRecipeDetailQuery } from '../services/Apis';
 import { ImSpoonKnife } from "react-icons/im";
-import { BsFillBarChartFill } from "react-icons/bs";
 import { BiTimeFive } from "react-icons/bi";
 import ContainerList from '../component/ContainerList';
 import Footer from '../component/Footer';
 
 const DetailFood = () => {
     const { id } = useParams();
-    const [indexStart, setIndexStart] = useState(0);
-    const [indexEnd, setIndexEnd] = useState(80);
 
     let dataArray;
     let desc;
@@ -45,7 +42,7 @@ const DetailFood = () => {
   <div key={item.idMeal}>
             <div> 
             <div className=" w-100 flex h-40 md:h-52 md:w-2/4 mt-8 lg:h-64 justify-center mx-auto"> 
-              <img src={item.strMealThumb} className="w-full h-100 object-cover"/>
+              <img src={item.strMealThumb} alt="img" className="w-full h-100 object-cover"/>
             </div> 
             
               <div className='w-11/12 mx-auto md:w-3/4 h-100 lg:w-3/5 xl:w-3/4'>

@@ -1,15 +1,15 @@
 import React from 'react'
-import { useAllFoodQuery, useGetRecipeDetailQuery } from '../services/Apis';
+import { useGetRecipeDetailQuery } from '../services/Apis';
 import { ImSpoonKnife } from "react-icons/im";
 import { BiTimeFive } from "react-icons/bi";
-import { BsFillBookmarkFill , BsHeartFill} from "react-icons/bs";
+import {  BsHeartFill} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const ComponentItem = (props) => {
 
    const { strMealThumb, strMeal, idMeal} = props.item;
 
-        const { data, error, isLoading } = useGetRecipeDetailQuery(idMeal);
+        const { data, error} = useGetRecipeDetailQuery(idMeal);
 
         let country, category;
 
@@ -35,7 +35,7 @@ const ComponentItem = (props) => {
   return (
   <> 
    <div className='md:hidden w-100 flex h-40 justify-center mx-auto'> 
-            <img src={`${strMealThumb}`} className='w-full h-100 rounded-3xl  object-cover' onClick={() => DetailFood(idMeal)}
+            <img src={`${strMealThumb}`} alt="img" className='w-full h-100 rounded-3xl  object-cover' onClick={() => DetailFood(idMeal)}
             />
             </div>
             <div className='p-4'> 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import imgBg from '../assets/img/ayam-goreng-surundeng.jpg';
-import { auth, provider } from '../config/firebase'
-import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../config/firebase'
+import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Register = () => {
@@ -33,7 +33,7 @@ const Register = () => {
   return (
     <div className='xl:pb-10'>
     <div className='flex justify-center md:mt-14'>
-     <img src={imgBg} className="w-full md:w-60 md:rounded-3xl"/>
+     <img src={imgBg} alt="img" className="w-full md:w-60 md:rounded-3xl"/>
     </div>
     <div className='md:w-3/4 mx-auto mt-2 md:mt-14 lg:w-3/5 xl:w-2/5'>  
     <div className='flex flex-col pt-4 ml-4'> 
@@ -43,6 +43,7 @@ const Register = () => {
   <input type="email" id="email" name="email" placeholder='email' className='text-lg border-b-gray-300 border-solid border-b-2  placeholder:text-black placeholder:font-medium mb-4 py-1 w-11/12' /> 
    <input type="password" id="password" name="password" placeholder='password' className='text-lg border-b-gray-300 border-solid border-b-2  placeholder:text-black placeholder:font-medium py-1 w-11/12' /> 
      <div className='mt-6 '>  
+           <p className='text-red'>{errorMessage}</p>
      <button type="submit" className='mt-8 rounded-full bg-red-400 p-2 text-white text-lg font-medium w-11/12 mx-auto'> Register </button>
      <button className='mt-4 p-2 text-black text-base mx-auto' onClick={() => navigateTo('/login')}> I already have an account, login </button>
      </div>

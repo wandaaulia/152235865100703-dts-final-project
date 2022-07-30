@@ -1,8 +1,8 @@
 import React from 'react'
-import { useAllFoodQuery, useGetRecipeDetailQuery } from '../services/Apis';
+import { useGetRecipeDetailQuery } from '../services/Apis';
 import { ImSpoonKnife } from "react-icons/im";
 import { BiTimeFive } from "react-icons/bi";
-import { BsFillBookmarkFill , BsHeartFill} from "react-icons/bs";
+import {  BsHeartFill} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ const ResponsiveItem = (props) => {
 
        const { strMealThumb, strMeal, idMeal} = props.item;
 
-        const { data, error, isLoading } = useGetRecipeDetailQuery(idMeal);
+        const { data, error } = useGetRecipeDetailQuery(idMeal);
 
         let country, category;
 
@@ -36,7 +36,7 @@ const ResponsiveItem = (props) => {
   return (
     <>
   <div className='w-100 xl:w-full  md:flex h-40 xl:h-64 justify-center mx-auto'> 
-            <img src={`${strMealThumb}`} className='w-full h-100 rounded-3xl object-cover' onClick={() => DetailFood(idMeal)}
+            <img src={`${strMealThumb}`} alt="img" className='w-full h-100 rounded-3xl object-cover' onClick={() => DetailFood(idMeal)}
             />
             </div>
             <div className='p-4'> 

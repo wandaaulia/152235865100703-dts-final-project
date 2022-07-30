@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import DetailFood from "./pages/DetailFood";
-import { useSelector, useDispatch } from "react-redux";
-import MenuBar from "./component/MenuBar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./component/ProtectedRoute";
