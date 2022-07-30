@@ -16,7 +16,7 @@ const ResponsiveItem = (props) => {
         let country, category;
 
         if(data) {
-          data.meals.map(item => {
+          data.meals.forEach((item) => {
        country = item.strArea;
            category = item.strCategory;
           })
