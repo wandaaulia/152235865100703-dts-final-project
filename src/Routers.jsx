@@ -5,6 +5,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./component/ProtectedRoute";
 import NoFound from "./pages/NoFound";
+import Search from "./pages/Search";
+import SearchName from "./pages/SearchName";
+import CategoryPage from "./pages/CategoryPage";
+import Favorite from "./pages/Favorite";
 
 const Routers = () => {
 
@@ -17,6 +21,38 @@ const Routers = () => {
             element={
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/search"
+            element={
+              <ProtectedRoute>
+                <Search />
+              </ProtectedRoute>
+            }
+          />
+             <Route
+            path="/search/category/:name"
+            element={
+              <ProtectedRoute>
+                <CategoryPage />
+              </ProtectedRoute>
+            }
+          />
+                <Route
+            path="/favorite"
+            element={
+              <ProtectedRoute>
+                <Favorite />
+              </ProtectedRoute>
+            }
+          />
+                 <Route
+            path="/search/:name"
+            element={
+              <ProtectedRoute>
+                <SearchName />
               </ProtectedRoute>
             }
           />

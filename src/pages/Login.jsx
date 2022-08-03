@@ -6,8 +6,6 @@ import { auth, provider } from '../config/firebase'
 import {  useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
-
   const navigate = useNavigate();
  const [errorMessage, setErrorMessage] = useState('');
 
@@ -52,11 +50,11 @@ const Login = () => {
     <form id="form" onSubmit={handleSubmit}>
   <input type="email" id="email" name="email" placeholder='email' className='text-lg border-b-gray-300 border-solid border-b-2  placeholder:text-black placeholder:font-medium mb-4 py-1 w-11/12' /> 
    <input type="password" id="password" name="password" placeholder='password' className='text-lg border-b-gray-300 border-solid border-b-2  placeholder:text-black placeholder:font-medium py-1 w-11/12' /> 
-      <p className='text-red'>{errorMessage}</p>
+      <p className='text-red-500'>{errorMessage}</p>
     <div className='mt-6 '>  
             <button type="submit" className='mt-3 rounded-full bg-red-400 p-2 text-white text-lg font-medium w-11/12 mx-auto'> Login </button>
        <button className='mt-4 rounded-full p-2 text-black text-lg border-solid border-red-300 border-2  font-medium w-11/12 mx-auto' onClick={signInWithGoogle}> Sign in With Google </button>
-     <button className='mt-4  p-2 text-black text-base mx-auto' onClick={() => navigateTo('/register')}> I don't have a account, register </button>
+     <button className='mt-4  p-2 text-black text-base mx-auto hover:text-gray-500' onClick={() => navigateTo('/register')}> I don't have a account, register </button>
      </div>
     </form>
      </div>

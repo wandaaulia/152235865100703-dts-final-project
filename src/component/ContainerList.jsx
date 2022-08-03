@@ -14,24 +14,22 @@ const ContainerList = (props) => {
     let arrayData;
 
     if(data) {
-        arrayData = data.meals.slice(1, 9);
-        console.log(arrayData);
-        
+        arrayData = data.meals.slice(1, 9); 
     }
 
 
   return (
-    <div className='w-11/12 mx-auto my-6 '>
+    <div className='w-full md:w-11/12 mx-auto my-6 '>
     <h1 className='font-semibold text-xl pb-6 xl:text-2xl text-red-500 pl-4 2xl:text-3xl'> {props.title} </h1>
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <>Loading...</>
+        <div className='mt-8 mb-8'>Loading...</div>
       ) : data ? 
       <>  
       <div className='md:hidden'>  
       <Swiper
-  id="main" slidesPerView={1.3} watchSlidesProgress={true} className="flex w-full flex-row flex-wrap">
+  id="main" slidesPerView={1.4} watchSlidesProgress={true} className="flex w-full flex-row flex-wrap">
       {
       arrayData.map((item) => 
         (
@@ -44,6 +42,7 @@ const ContainerList = (props) => {
       }
       </Swiper> 
       </div>
+      
 <div className='hidden md:flex w-11/12 md:w-full'>
         <Swiper breakpoints={{
     1024: {

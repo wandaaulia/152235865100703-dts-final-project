@@ -1,10 +1,9 @@
 import React from 'react'
 import { useGetRecipeDetailQuery } from '../services/Apis';
-import { ImSpoonKnife } from "react-icons/im";
-import { BiTimeFive } from "react-icons/bi";
-import {  BsHeartFill} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-
+import ButtonFav from './ButtonFav';
+import { GiBowlOfRice } from "react-icons/gi";
+import { BiWorld } from "react-icons/bi";
 
 const ResponsiveItem = (props) => {
 
@@ -36,7 +35,7 @@ const ResponsiveItem = (props) => {
   return (
     <>
   <div className='w-100 xl:w-full  md:flex h-40 xl:h-64 justify-center mx-auto'> 
-            <img src={`${strMealThumb}`} alt="img" className='w-full h-100 rounded-3xl object-cover' onClick={() => DetailFood(idMeal)}
+            <img src={`${strMealThumb}`} alt="img" className='cursor-pointer w-full h-100 rounded-3xl object-cover' onClick={() => DetailFood(idMeal)}
             />
             </div>
             <div className='p-4'> 
@@ -44,20 +43,18 @@ const ResponsiveItem = (props) => {
           <div className='pt-3 flex flex-row'> 
           <div className='grow'>  
              <div className='flex flex-row items-center text-sm py-1 2xl:text-lg color-grey'> 
-                <ImSpoonKnife /> 
+                <GiBowlOfRice /> 
                 <div className='px-1 2xl:px-3'> 
                          { data ? category : 'food'}
                 </div> 
               </div>
-             <div className='flex flex-row items-center text-xs 2xl:text-lg color-grey'>  <BiTimeFive />
+             <div className='flex flex-row items-center text-xs 2xl:text-lg color-grey'>  <BiWorld />
                <div className='px-1 2xl:px-4'>
                { data ? country : 'world'}
               </div> </div>
      </div>
 
-     <div className='mt-3 text-lg text-red-500 xl:text-2xl 2xl:text-3xl mx-3'> 
-     <BsHeartFill className='cursor-pointer'/>
-     </div>
+ <ButtonFav idMeal={idMeal} strMealThumb={strMealThumb} strMeal={strMeal}/>
 
           </div> 
           </div> 

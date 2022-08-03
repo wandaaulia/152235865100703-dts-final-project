@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 0,
-  isMenu: false
+activeObject: null,
+itemList:  ['chicken', 'beef', 'dessert', 'pasta', 'seafood', 'Vegetarian'],
+unfav: null,
+itemFav : [],
+modalLogin : false
 }
 
 export const recipeSlice = createSlice({
@@ -12,12 +16,31 @@ export const recipeSlice = createSlice({
     setOpenMenu: (state) => {
       state.isMenu = true
     },
-    setCloseMenu: (state) => {
-    state.isMenu = false
+    setActiveCat : (state, action) => {
+      state.activeObject = state.itemList[action.payload]
     },
+    unSetActiveCat : (state) => {
+      state.activeObject = null;
+    },
+     setFav : (state, action) => {
+    state.itemFav.push({
+      idMeal:  action.payload.idMeal,
+      strMealThumb : action.payload.strMealThumb, 
+      strMeal : action.payload.strMeal
+     });
+    },
+    unSetFav : (state, action) => {
+     state.itemFav = state.itemFav.filter((item) => item.idMeal !== action.payload);
+    },
+    setModalLogin : (state) => {
+      state.modalLogin = true;
+    },
+    unSetModalLogin : (state) => {
+      state.modalLogin = false;
+    }
   },
 })
 
-export const { setOpenMenu, setCloseMenu } = recipeSlice.actions
+export const { setActiveCat, unSetActiveCat, setFav, unSetFav, setModalLogin, unSetModalLogin  } = recipeSlice.actions
 
 export default recipeSlice.reducer

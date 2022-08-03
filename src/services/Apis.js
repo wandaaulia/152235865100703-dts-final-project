@@ -13,8 +13,12 @@ export const recipeApi = createApi({
   }),
   getRecipeDetail : builder.query({
     query: (key) => `/api/json/v1/1/lookup.php?i=${key}`
+  }),
+    searchRecipeByName : builder.query({
+    query: (name) => `/api/json/v1/1/search.php?s=${name}`
   })
 })
 })
 
-export const { useAllFoodQuery, useGetCategoryFoodQuery, useGetRecipeDetailQuery} = recipeApi
+export const { useAllFoodQuery, useGetCategoryFoodQuery, useGetRecipeDetailQuery,
+useSearchRecipeByNameQuery} = recipeApi
