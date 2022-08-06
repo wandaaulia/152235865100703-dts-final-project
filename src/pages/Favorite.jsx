@@ -19,8 +19,18 @@ const [user] = useAuthState(auth);
   const navigateTo = async (link) => {
       await navigate(link);
     }
+      let userEmail;
+         let findUser;
 
+    if(user) {
+   userEmail = user.email;
+  findUser = fav.filter((item) => item.userEmail === userEmail);
+    }
 
+    console.log(userEmail);
+    console.log(findUser);
+    
+   console.log(fav);
   return (
     <div className='flex flex-col min-h-screen' > 
      <div className='flex-1 mb-4 xl:mb-14'>
@@ -35,13 +45,13 @@ const [user] = useAuthState(auth);
 
 
       {  user ? 
-        
-      fav.length > 0 ? 
+          
+      findUser.length > 0 ? 
           <div className='flex w-full flex-row flex-wrap pt-4'> 
 
     {
   
-      fav.map((item) => 
+      findUser.map((item) => 
         (
           <div key={item.idMeal} className="w-1/2 my-2 lg:w-2/6 xl:w-3/12 "> 
           <ComponentItem item={item} key={item.id}/>

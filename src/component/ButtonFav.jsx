@@ -18,6 +18,18 @@ const ButtonFav = (props) => {
     const navigate = useNavigate();
 
     const fav = useSelector((state) => state.recipe.itemFav); 
+    
+       let userEmail;
+         let findUser;
+           let getUserFav;
+
+    if(user) {
+    
+   userEmail = user.email;
+  findUser = fav.filter((item) => item.userEmail === userEmail);
+  getUserFav = findUser.find((item) => item.idMeal === idMeal);
+    }
+    
 
    const dispatch = useDispatch();
 
@@ -25,9 +37,9 @@ const ButtonFav = (props) => {
       if(!user) { 
            return navigate('/login');
       }
+
           setFavIcon(!favIcon);   
-          await dispatch(setFav({idMeal, strMealThumb, strMeal}));
-            
+          await dispatch(setFav({userEmail, idMeal, strMealThumb, strMeal}));
           Swal.fire({
             title: "Saved to your favorite recipe",
             confirmButtonText: "OK",
@@ -36,22 +48,35 @@ const ButtonFav = (props) => {
             color: '#ffff',
             background: 'rgba(0, 0, 0, .7)',
              timer: 1500
-          });
-         
+          }); 
+
     }
 
     const unFav =  async () => {
+        if(getUserFav !== undefined) {
+        const { id} = getUserFav;
+  
         setFavIcon(!favIcon);
-         await dispatch(unSetFav(idMeal));
+         await dispatch(unSetFav(id)); 
+        }
+         
     }
 
-    const iconFav =  fav.find(item => item.idMeal === idMeal);
+ let iconFav;
+
+    if(user) {
+      iconFav = getUserFav;
+    } else {
+    iconFav =  fav.find(item => item.idMeal === idMeal);
+    }
+
+  
 
   return (
     <> {
       
       user ? 
-      iconFav ? 
+      iconFav? 
   <div className='mt-3 text-2xl 2xl:text-3xl mx-2 text-red-500 lg:p-2' > 
      <BsHeartFill className='cursor-pointer' onClick={unFav}/>
      </div>

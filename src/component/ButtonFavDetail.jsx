@@ -19,6 +19,18 @@ const ButtonFavDetail = (props) => {
 
     const fav = useSelector((state) => state.recipe.itemFav); 
 
+      let userEmail;
+         let findUser;
+           let getUserFav;
+
+    if(user) {
+   userEmail = user.email;
+  findUser = fav.filter((item) => item.userEmail === userEmail);
+  getUserFav = findUser.find((item) => item.idMeal === idMeal);
+
+    }
+
+
    const dispatch = useDispatch();
 
     const onFav = async () => {
@@ -26,7 +38,7 @@ const ButtonFavDetail = (props) => {
            return navigate('/login');
       }
           setFavIcon(!favIcon);   
-          await dispatch(setFav({idMeal, strMealThumb, strMeal}));
+          await dispatch(setFav({userEmail, idMeal, strMealThumb, strMeal}));
             
           Swal.fire({
             title: "Saved to your favorite recipe",
@@ -40,12 +52,23 @@ const ButtonFavDetail = (props) => {
          
     }
 
-    const unFav =  async () => {
+    const unFav =  async () => { 
+       if(getUserFav !== undefined) {
+        const { id} = getUserFav;
+  
         setFavIcon(!favIcon);
-         await dispatch(unSetFav(idMeal));
+         await dispatch(unSetFav(id)); 
+        }
+    }
+    
+let iconFav;
+
+    if(user) {
+      iconFav = getUserFav;
+    } else {
+    iconFav =  fav.find(item => item.idMeal === idMeal);
     }
 
-    const iconFav =  fav.find(item => item.idMeal === idMeal);
 
   return (
     <> {
